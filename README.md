@@ -5,7 +5,7 @@ especially when the level head effect is enabled.  This bug can cause a tilt in 
 makes it appear as if the pilot has a crick in their neck.
 
 THIS PLUGIN IS INCOMPATIBLE WITH X-CAMERA AND TRACKIR.  Use the SimCoder's version of HeadShake if you use
-this plugins.
+those plugins.
 
 # HeadShake plugin for X-Plane 10/11
 

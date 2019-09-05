@@ -15,7 +15,7 @@ This plugin was developed by [SimCoders.com](https://www.simcoders.com) and main
 
 # Download
 
-You can download the plugin from https://www.simcoders.com/headshake/features-and-download
+You can download the ORIGINAL plugin from https://www.simcoders.com/headshake/features-and-download
 
 # Compile the source code
 

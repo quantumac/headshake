@@ -67,7 +67,7 @@ void GroundRollCameraCommand::execute(CameraPosition &position, float elapsedTim
     if (mPitchFilter.size() > 5)
         mPitchFilter.pop_back();
     acc = continue_log(average(mPitchFilter));
-    mLastPitch = quantize(-(acc * mResponse / 10.0f));
+    mLastPitch = -(acc * mResponse / 10.0f);
     position.pitch += mLastPitch;
 
     // Roll
@@ -75,7 +75,7 @@ void GroundRollCameraCommand::execute(CameraPosition &position, float elapsedTim
     if (mYawFilter.size() > 25)
         mYawFilter.pop_back();
     acc = continue_log(average(mYawFilter));
-    mLastRoll -= quantize((acc * mResponse / 5.0f));
+    mLastRoll -= (acc * mResponse / 5.0f);
     position.roll += mLastRoll;
 
     // X

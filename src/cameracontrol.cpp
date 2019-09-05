@@ -439,9 +439,9 @@ float CameraControl::control(float elapsedTime)
 
     // If not overridden, read the current camera position
     if (!mOverride) {
-        currentPos.pitch = quantize(XPLMGetDataf(mHeadPitchDataRef));
-        currentPos.yaw = quantize(XPLMGetDataf(mHeadHeadingDataRef));
-        currentPos.roll = quantize(XPLMGetDataf(mHeadRollDataRef));
+        currentPos.pitch = XPLMGetDataf(mHeadPitchDataRef);
+        currentPos.yaw = XPLMGetDataf(mHeadHeadingDataRef);
+        currentPos.roll = XPLMGetDataf(mHeadRollDataRef);
         currentPos.x = XPLMGetDataf(mHeadXDataRef);
         currentPos.y = XPLMGetDataf(mHeadYDataRef);
         currentPos.z = XPLMGetDataf(mHeadZDataRef);

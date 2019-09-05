@@ -97,8 +97,8 @@ void TaxiLookAheadCameraCommand::execute(CameraPosition &position, float elapsed
     // Cache y, z, yaw & roll
     mLastY         = lean * 0.25f;
     mLastZ         = -lean;
-    mLastYaw       = quantize(acc);
-    mLastRoll      = quantize(acc * 0.125f);
+    mLastYaw       = acc;
+    mLastRoll      = acc * 0.125f;
 
     position.y    += mLastY;
     position.z    += mLastZ;

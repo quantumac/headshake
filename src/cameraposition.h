@@ -4,10 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "helpers.h"
-
-//#define EPSILON 1e-12
-#define EPSILON (1.0f/(float)(1<<FRAC_BIT_RES))
+#define EPSILON 1e-12
 
 struct CameraPosition
 {

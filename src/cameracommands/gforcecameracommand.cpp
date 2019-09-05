@@ -124,7 +124,7 @@ void GForceCameraCommand::execute(CameraPosition &position, float elapsedTime)
     }
     acc = continue_log(average(mZFilter));
     mLastZ -= (acc * mZResponse * mGeneralSensitivity / 500.0f);
-    mLastPitch -= quantize(acc * mZResponse * mGeneralSensitivity / 7.5f);
+    mLastPitch -= (acc * mZResponse * mGeneralSensitivity / 7.5f);
     position.y += -mLastZ / 2.0f;
     position.z += mLastZ;
 
@@ -134,13 +134,13 @@ void GForceCameraCommand::execute(CameraPosition &position, float elapsedTime)
     while (mYawFilter.size() > mDamper)
         mYawFilter.pop_back();
     acc = continue_log(average(mYawFilter));
-    mLastYaw -= quantize(acc * mYawResponse * mGeneralSensitivity / 15);
+    mLastYaw -= (acc * mYawResponse * mGeneralSensitivity / 15);
     position.yaw += mLastYaw;
 
     // Roll
     // (works like the heading but with a different response)
     if (acc < -0.005 || acc > 0.005) {
-        mLastRoll -= quantize((acc * mYawResponse * mGeneralSensitivity / 5));
+        mLastRoll -= (acc * mYawResponse * mGeneralSensitivity / 5);
         position.roll += mLastRoll;
     } else {
         mLastRoll = 0;
@@ -162,7 +162,7 @@ void GForceCameraCommand::execute(CameraPosition &position, float elapsedTime)
     while (mPitchFilter.size() > mDamper)
         mPitchFilter.pop_back();
     acc = average(mPitchFilter);
-    mLastPitch -= quantize(continue_log(acc) * mPitchResponse * mGeneralSensitivity / 10.0f);
+    mLastPitch -= (continue_log(acc) * mPitchResponse * mGeneralSensitivity / 10.0f);
     position.pitch += mLastPitch;
 }
 

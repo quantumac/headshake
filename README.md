@@ -15,8 +15,6 @@ This plugin was developed by [SimCoders.com](https://www.simcoders.com) and main
 
 # Download
 
-You can download the ORIGINAL plugin from https://www.simcoders.com/headshake/features-and-download
-
 There is no download binary option for this fork of the HeadShake plugin.  To use this fork you must
 download the source code and compile.
 

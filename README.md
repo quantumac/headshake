@@ -1,3 +1,12 @@
+# *** QUANTUMAC FORK COMPATIBILITY WARNING ***
+
+This fork of HeadShake was created specifically to work around a head roll drift issue caused by X-Plane,
+especially when the level head effect is enabled.  This bug can cause a tilt in the view over time, which
+makes it appear as if the pilot has a crick in their neck.
+
+THIS PLUGIN IS INCOMPATIBLE WITH X-CAMERA AND TRACKIR.  Use the SimCoder's version of HeadShake if you use
+those plugins.
+
 # HeadShake plugin for X-Plane 10/11
 
 HeadShake is an X-Plane camera plugin wich adds some nice POV effects while flying in virtual cockpit view.
@@ -6,7 +15,8 @@ This plugin was developed by [SimCoders.com](https://www.simcoders.com) and main
 
 # Download
 
-You can download the plugin from https://www.simcoders.com/headshake/features-and-download
+There is no download binary option for this fork of the HeadShake plugin.  To use this fork you must
+download the source code and compile.
 
 # Compile the source code
 

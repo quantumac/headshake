@@ -171,7 +171,7 @@ void Menu::visit(CameraControl& control)
 	XPCreateWidget(x1 - 5, y, x2, y - 30, 1, "*** QUANTUMAC FORK COMPATIBILITY WARNING ***", 0, mWidgetId, xpWidgetClass_Caption);
         XPCreateWidget(x1 - 5, y, x2, y - 90, 1, "This fork of HeadShake was created specifically to work around a head roll drift issue caused by X-Plane, especially when the level head effect is enabled.", 0, mWidgetId, xpWidgetClass_Caption);
         XPCreateWidget(x1 - 5, y, x2, y - 120, 1, "This bug can cause a tilt in the view over time, which makes it appear as if the pilot has a crick in their neck.", 0, mWidgetId, xpWidgetClass_Caption);
-        XPCreateWidget(x1 - 5, y, x2, y - 180, 1, "THIS PLUGIN IS INCOMPATIBLE WITH X-CAMERA OR TRACKIR.  Use the SimCoder's version of HeadShake if you use those plugins.", 0, mWidgetId, xpWidgetClass_Caption);
+        XPCreateWidget(x1 - 5, y, x2, y - 180, 1, "THIS PLUGIN IS INCOMPATIBLE WITH X-Camera AND TrackIR.  Use the SimCoder's version of HeadShake if you use those plugins.", 0, mWidgetId, xpWidgetClass_Caption);
         
 	// Move all the widgets down to make space for the compatibility warning
 	mTop -= (mCompWarningHeight + 7);

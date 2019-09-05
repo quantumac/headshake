@@ -53,6 +53,7 @@ private:
 	int mRight;
 	int mBottom;
 	int mAdsHeight;
+	int mCompWarningHeight;
 	bool mShowAds;
 	CameraControl* mCameraControl;
 	GForceCameraCommand* mGforceCameraCommand;

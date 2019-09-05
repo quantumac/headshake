@@ -53,7 +53,7 @@ Menu* Menu::get_instance()
 void Menu::create_menu_entry(CameraControl& control)
 {
 	mCameraControl = &control;
-	mId = XPLMAppendMenuItem(XPLMFindPluginsMenu(), "SimCoders - HeadShake", 0, 1);
+	mId = XPLMAppendMenuItem(XPLMFindPluginsMenu(), "SimCoders - HeadShake (quantumac fork)", 0, 1);
 	XPLMMenuID subMenuId = XPLMCreateMenu("Settings", XPLMFindPluginsMenu(), mId, [](void*, void*) -> void {
 		// When clicked, start visiting the control and the commands and draw the widgets
 		Menu::mInstance->show();
@@ -103,6 +103,7 @@ Menu::Menu()
 	mWidth = 1050;
 	mAdsHeight = 100;
 	mWidgetId = nullptr;
+        mCompWarningHeight = 120;
 }
 
 Menu::~Menu()
@@ -116,7 +117,7 @@ void Menu::visit(CameraControl& control)
 	int w, h, x1, x2;
 	XPWidgetID subw, enableButton;
 	XPLMGetScreenSize(&w, &h);
-	mHeight = (control.error() ? 490 : 440) + mAdsHeight;
+	mHeight = (control.error() ? 490 : 440) + mAdsHeight + mCompWarningHeight + 10;
 	mLeft = (w - mWidth) / 2;
 	mTop = (h + mHeight) / 2;
 	mRight = mLeft + mWidth;
@@ -124,7 +125,7 @@ void Menu::visit(CameraControl& control)
 	mShowAds = XPLMFindPluginBySignature("com.simcoders.rep") == XPLM_NO_PLUGIN_ID;
 
 	// Create the Main Widget window
-	mWidgetId = XPCreateWidget(mLeft, mTop, mRight, mBottom, 1, "SimCoders - HeadShake", 1, 0, xpWidgetClass_MainWindow);
+	mWidgetId = XPCreateWidget(mLeft, mTop, mRight, mBottom, 1, "SimCoders - HeadShake (quantumac fork)", 1, 0, xpWidgetClass_MainWindow);
 	XPSetWidgetProperty(mWidgetId, xpProperty_MainWindowHasCloseBoxes, 1);
 	XPAddWidgetCallback(mWidgetId, [](XPWidgetMessage inMessage, XPWidgetID inWidget, intptr_t, intptr_t) -> int {
 		// When the close buttons are clicked, close the window
@@ -160,8 +161,20 @@ void Menu::visit(CameraControl& control)
 		XPCreateWidget(x1 - 5, y, x2, y - 160, 1, "We wish you blue skies with REP and HeadShake!", 0, mWidgetId, xpWidgetClass_Caption);
 	}
 
-	// Move all the widgets down to make space for the ads
+        // Move all the widgets down to make space for the ads
 	mTop -= mAdsHeight;
+        
+	y = mTop - 30;
+	subw = XPCreateWidget(mLeft + 10, y, mRight - 10, y - mCompWarningHeight, 1, "*** QUANTUMAC FORK COMPATIBILITY WARNING ***", 0, mWidgetId, xpWidgetClass_SubWindow);
+	XPSetWidgetProperty(subw, xpProperty_SubWindowType, xpSubWindowStyle_SubWindow);
+        // Add the description
+	XPCreateWidget(x1 - 5, y, x2, y - 30, 1, "*** QUANTUMAC FORK COMPATIBILITY WARNING ***", 0, mWidgetId, xpWidgetClass_Caption);
+        XPCreateWidget(x1 - 5, y, x2, y - 90, 1, "This fork of HeadShake was created specifically to work around a head roll drift issue caused by X-Plane, especially when the level head effect is enabled.", 0, mWidgetId, xpWidgetClass_Caption);
+        XPCreateWidget(x1 - 5, y, x2, y - 120, 1, "This bug can cause a tilt in the view over time, which makes it appear as if the pilot has a crick in their neck.", 0, mWidgetId, xpWidgetClass_Caption);
+        XPCreateWidget(x1 - 5, y, x2, y - 180, 1, "THIS PLUGIN IS INCOMPATIBLE WITH X-CAMERA OR TRACKIR.  Use the SimCoder's version of HeadShake if you use those plugins.", 0, mWidgetId, xpWidgetClass_Caption);
+        
+	// Move all the widgets down to make space for the compatibility warning
+	mTop -= (mCompWarningHeight + 7);
 
 	// Create the general "Enable/Disable" menu
 	y = mTop - 30;

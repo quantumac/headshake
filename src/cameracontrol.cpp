@@ -514,6 +514,8 @@ float CameraControl::control(float elapsedTime)
     }
     // Set the position offset
     mCameraOffset = mCameraOffset + calculatedPos;
+    mCameraOffset.normalize();
+
     // Save the updated position
     mLastPos = currentPos;
 

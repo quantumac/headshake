@@ -96,7 +96,7 @@ public:
   {
     roll  = fmodf(roll + 180.0f, 360.0f) - 180.0f;
     pitch = fmodf(pitch + 180.0f, 360.0f) - 180.0f;
-    yaw   = fmodf(yaw + 360.0f, 360.f);
+    yaw   = fmodf(yaw + 180.0f, 360.f) - 180.0f;
   }
   
 protected:

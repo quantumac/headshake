@@ -529,9 +529,11 @@ CameraPosition CameraControl::get_offset()
 
 void CameraControl::set_override(bool value)
 {
+#if 0
     char buff[16];
-    sprintf(buff, "set: %d\n", value);
+    sprintf(buff, "headshake set override: %d\n", value);
     XPLMDebugString(buff);
+#endif
     mOverride = value;
 }
 
